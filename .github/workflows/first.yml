@@ -1,42 +1,12 @@
-name: complex-workflow
+name: Python Application
 
 on: push
 
 jobs:
-  job1:
-    name: First job
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Ubuntu Print Date
-      run: date
-  job2:
-    name: Second job
-    runs-on: windows-latest
-    steps:
-    - name: Windows Print Date
-      run: date
-  job3:
-    name: Third job
-    runs-on: macos-latest
-    steps:
-    - name: MacOS Print Date
-      run: date
-  job4:
-    name: Fourth job
-    runs-on: macos-latest
-    needs: [job1, job2, job3]
-    steps:
-    - name: MacOS Print Date
-      run: date
-  # build:
-
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: Run a one-line script
-  #     run: echo Hello, world!
-  #   - name: Run a multi-line script
-  #     run: |
-  #       echo Add other actions to build,
-  #       echo test, and deploy your project.
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
+    - name: Python Syntax Checker
+      uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
